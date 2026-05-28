@@ -1,662 +1,500 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FICA Tip Credit Recovery | The Inspire Group</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FICA Tip Credit Recovery | The Inspire Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --green:       #2d4a35;
+    --green-dark:  #1a2e1e;
+    --green-mid:   #3a5c43;
+    --green-light: #4d7057;
+    --green-pale:  #ddeae0;
+    --amber:       #e8930a;
+    --amber-light: #f5a825;
+    --amber-pale:  #fdf0d0;
+    --amber-deep:  #a85f00;
+    --cream:       #faf8f3;
+    --white:       #ffffff;
+    --text-dark:   #1a2e1e;
+    --text-mid:    #2e4435;
+    --text-muted:  #4a5e4e;
+    --border:      rgba(45,74,53,0.15);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
 
-    :root {
-      --navy:    #0d1b2a;
-      --navy2:   #12263a;
-      --gold:    #c9a84c;
-      --gold2:   #e2c17a;
-      --cream:   #f9f5ee;
-      --white:   #ffffff;
-      --text:    #1a1a2e;
-      --muted:   #5a6472;
-      --border:  #ddd6c8;
-      --green:   #2a7f62;
-    }
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: #1a2e1e;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%; height: 74px;
+    border-bottom: 2px solid rgba(232,147,10,0.35);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 14px; }
+  .nav-logo img { height: 48px; width: auto; display: block; }
+  .nav-division { font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: #f5a825; padding-left: 14px; border-left: 1px solid rgba(232,147,10,0.35); }
+  .nav-cta { background: var(--amber); color: #fff; font-size: 13px; font-weight: 600; padding: 10px 24px; border-radius: 4px; text-decoration: none; letter-spacing: 0.3px; transition: background 0.2s, transform 0.15s; white-space: nowrap; }
+  .nav-cta:hover { background: var(--amber-light); transform: translateY(-1px); }
 
-    html { scroll-behavior: smooth; }
+  /* HERO */
+  .hero {
+    min-height: 100vh; background: #1a2e1e;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center; gap: 0;
+    padding: 110px 5% 80px;
+  }
+  .hero-left { padding-right: 40px; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: #f5a825; margin-bottom: 24px; }
+  .hero-eyebrow::before { content: ''; display: block; width: 30px; height: 1px; background: #e8930a; }
+  .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(38px, 4.5vw, 68px); font-weight: 600; color: #fff; line-height: 1.08; letter-spacing: -0.5px; margin-bottom: 24px; }
+  .hero h1 em { font-style: normal; color: #f5a825; }
+  .hero-sub { font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.68); max-width: 460px; line-height: 1.75; margin-bottom: 36px; }
+  .hero-proof { display: flex; gap: 28px; flex-wrap: wrap; }
+  .hero-proof-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,0.6); }
+  .hero-proof-item::before { content: '✓'; color: #f5a825; font-weight: 700; font-size: 14px; }
 
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--cream);
-      color: var(--text);
-      line-height: 1.6;
-    }
+  /* CALC CARD */
+  .hero-right { display: flex; align-items: center; justify-content: center; }
+  .calc-card { background: #fff; border-radius: 16px; padding: 36px 36px 32px; width: 100%; max-width: 420px; box-shadow: 0 20px 60px rgba(0,0,0,0.35); }
+  .calc-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; padding-bottom: 18px; border-bottom: 1px solid var(--border); }
+  .calc-card-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: #1a2e1e; line-height: 1.2; }
+  .calc-card-badge { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; background: var(--green-pale); color: #1e3a26; padding: 4px 10px; border-radius: 20px; white-space: nowrap; }
+  .calc-field { margin-bottom: 16px; }
+  .calc-field label { display: block; font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #2e4435; margin-bottom: 6px; }
+  .calc-field-row { display: flex; align-items: center; gap: 0; }
+  .calc-prefix { background: var(--green-pale); border: 1.5px solid var(--border); border-right: none; border-radius: 6px 0 0 6px; padding: 10px 12px; font-size: 14px; font-weight: 600; color: #2d4a35; }
+  .calc-field input { flex: 1; border: 1.5px solid var(--border); border-radius: 0 6px 6px 0; padding: 10px 14px; font-family: 'DM Sans', sans-serif; font-size: 15px; color: #1a2e1e; background: #f7f5f0; outline: none; transition: border-color 0.2s; -moz-appearance: textfield; }
+  .calc-field input::-webkit-outer-spin-button, .calc-field input::-webkit-inner-spin-button { -webkit-appearance: none; }
+  .calc-field input:focus { border-color: var(--amber); background: #fff; }
+  .calc-field input.no-prefix { border-radius: 6px; width: 100%; border: 1.5px solid var(--border); padding: 10px 14px; font-family: 'DM Sans', sans-serif; font-size: 15px; color: #1a2e1e; background: #f7f5f0; outline: none; transition: border-color 0.2s; -moz-appearance: textfield; }
+  .calc-field input.no-prefix:focus { border-color: var(--amber); background: #fff; }
+  .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+  .calc-btn { width: 100%; background: var(--amber); color: #fff; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; padding: 14px; border: none; border-radius: 8px; cursor: pointer; letter-spacing: 0.3px; transition: background 0.2s, transform 0.15s; margin-bottom: 16px; }
+  .calc-btn:hover { background: var(--amber-light); transform: translateY(-1px); }
+  .calc-result { background: #1a2e1e; border-radius: 10px; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; min-height: 74px; }
+  .calc-result-label { font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.6); line-height: 1.4; max-width: 120px; }
+  .calc-result-amount { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 700; color: #f5a825; line-height: 1; }
+  .calc-result-amount.placeholder { font-size: 20px; color: rgba(255,255,255,0.25); font-family: 'DM Sans', sans-serif; font-weight: 300; }
+  .calc-disclaimer { font-size: 11px; color: #6b7d6e; text-align: center; margin-top: 12px; line-height: 1.5; }
+  .calc-cta-link { display: block; text-align: center; margin-top: 10px; font-size: 13px; font-weight: 600; color: var(--amber-deep); text-decoration: none; transition: color 0.2s; }
+  .calc-cta-link:hover { color: var(--amber); }
 
-    /* ── HEADER ── */
-    header {
-      background: var(--navy);
-      padding: 18px 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+  /* LOGO BAND */
+  .logo-band { background: #fff; padding: 36px 5%; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--border); }
+  .logo-band-inner { display: flex; align-items: center; gap: 36px; flex-wrap: wrap; justify-content: center; }
+  .logo-band img { height: 60px; width: auto; display: block; }
+  .logo-band-divider { width: 1px; height: 48px; background: var(--border); }
+  .logo-band-tagline { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; color: #2e4435; max-width: 400px; }
 
-    .logo-mark {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
+  /* SECTIONS */
+  section { padding: 96px 5%; }
+  .section-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: #a85f00; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+  .section-eyebrow::before { content: ''; display: block; width: 22px; height: 1.5px; background: #e8930a; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(30px, 3.8vw, 50px); font-weight: 600; color: #1a2e1e; line-height: 1.1; letter-spacing: -0.3px; margin-bottom: 18px; }
+  .section-sub { font-size: 17px; font-weight: 300; color: #3a4e3e; line-height: 1.8; max-width: 580px; }
 
-    .logo-icon {
-      width: 44px; height: 44px;
-      background: var(--gold);
-      border-radius: 6px;
-      display: flex; align-items: center; justify-content: center;
-    }
+  /* WHAT IS IT */
+  .what { background: #fff; }
+  .what-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; margin-top: 56px; }
+  .what-copy p { font-size: 16px; color: #2e4435; line-height: 1.85; margin-bottom: 18px; }
+  .what-copy blockquote { border-left: 3px solid var(--amber); padding: 16px 22px; margin: 28px 0; background: #fdf0d0; border-radius: 0 6px 6px 0; font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 600; color: #1a2e1e; line-height: 1.45; font-style: italic; }
+  .what-right { display: flex; flex-direction: column; }
+  .what-visual { background: #1a2e1e; border-radius: 14px; padding: 40px; position: relative; overflow: hidden; }
+  .what-visual::before { content: '§45B'; position: absolute; top: 16px; right: 20px; font-family: 'Cormorant Garamond', serif; font-size: 72px; font-weight: 700; color: rgba(232,147,10,0.07); line-height: 1; pointer-events: none; }
+  .vis-label { font-size: 10px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: #f5a825; margin-bottom: 28px; }
+  .vis-row { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; }
+  .vis-icon { width: 34px; height: 34px; border-radius: 6px; background: rgba(232,147,10,0.12); display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+  .vis-text strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: #fff; line-height: 1; margin-bottom: 2px; }
+  .vis-text span { font-size: 12px; color: rgba(255,255,255,0.5); }
+  .vis-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 18px 0; }
+  .vis-total { display: flex; align-items: center; justify-content: space-between; background: #e8930a; padding: 16px 20px; border-radius: 8px; margin-top: 6px; }
+  .vis-total span { font-size: 12px; font-weight: 600; color: #fff; }
+  .vis-total strong { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 700; color: #fff; line-height: 1; }
 
-    .logo-icon svg { width: 26px; height: 26px; fill: var(--navy); }
+  /* STEPS */
+  .how { background: #eef4f0; }
+  .steps-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin-top: 56px; background: rgba(45,74,53,0.15); border-radius: 12px; overflow: hidden; }
+  .step { background: #fff; padding: 38px 28px; }
+  .step-num { font-family: 'Cormorant Garamond', serif; font-size: 58px; font-weight: 700; color: #c8dace; line-height: 1; margin-bottom: 16px; letter-spacing: -2px; }
+  .step-accent { width: 28px; height: 3px; background: #e8930a; border-radius: 2px; margin-bottom: 18px; }
+  .step h3 { font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 600; color: #1a2e1e; margin-bottom: 10px; line-height: 1.2; }
+  .step p { font-size: 14px; color: #3a4e3e; line-height: 1.7; }
 
-    .logo-text { color: var(--white); }
-    .logo-text .brand { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; letter-spacing: 0.02em; }
-    .logo-text .division { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold2); margin-top: 1px; }
+  /* WHY */
+  .why { background: #1a2e1e; color: #fff; }
+  .why .section-title { color: #fff; }
+  .why .section-eyebrow { color: #f5a825; }
+  .why .section-eyebrow::before { background: #e8930a; }
+  .why-sub { font-size: 17px; font-weight: 300; color: rgba(255,255,255,0.65); max-width: 640px; line-height: 1.8; margin-bottom: 0; }
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 56px; background: rgba(255,255,255,0.07); border-radius: 12px; overflow: hidden; }
+  .why-card { background: rgba(255,255,255,0.04); padding: 38px; }
+  .why-card-icon { width: 44px; height: 44px; background: rgba(232,147,10,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 18px; }
+  .why-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: #fff; margin-bottom: 10px; }
+  .why-card p { font-size: 15px; color: rgba(255,255,255,0.62); line-height: 1.75; }
+  .analogy-box { margin-top: 56px; border: 1px solid rgba(232,147,10,0.25); border-radius: 12px; padding: 40px 44px; background: rgba(232,147,10,0.07); display: flex; align-items: center; gap: 32px; }
+  .analogy-sun { font-size: 48px; flex-shrink: 0; }
+  .analogy-quote { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; color: #fff; line-height: 1.4; font-style: italic; }
+  .analogy-quote em { font-style: normal; color: #f5a825; }
+  .analogy-attr { display: block; margin-top: 14px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.38); font-style: normal; }
 
-    .header-cta a {
-      background: var(--gold);
-      color: var(--navy);
-      font-weight: 600;
-      font-size: 0.85rem;
-      padding: 10px 22px;
-      border-radius: 4px;
-      text-decoration: none;
-      letter-spacing: 0.03em;
-      transition: background 0.2s;
-    }
-    .header-cta a:hover { background: var(--gold2); }
+  /* WHO QUALIFIES */
+  .who { background: #fff; }
+  .qualify-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 56px; }
+  .qualify-card { border: 1px solid rgba(45,74,53,0.15); border-radius: 10px; padding: 30px 26px; cursor: pointer; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s, background 0.2s; }
+  .qualify-card:hover { border-color: #e8930a; transform: translateY(-4px); box-shadow: 0 8px 32px rgba(232,147,10,0.18); background: #fffdf7; }
+  .qualify-icon { font-size: 26px; margin-bottom: 14px; display: block; }
+  .qualify-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: #1a2e1e; margin-bottom: 8px; }
+  .qualify-card p { font-size: 14px; color: #3a4e3e; line-height: 1.65; }
+  .qualify-badge { display: inline-flex; align-items: center; gap: 6px; background: #ddeae0; color: #1e3a26; font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 20px; margin-top: 12px; letter-spacing: 0.3px; transition: background 0.2s; }
+  .qualify-card:hover .qualify-badge { background: #f5a825; color: #1a2e1e; }
 
-    /* ── HERO ── */
-    .hero {
-      background: var(--navy);
-      color: var(--white);
-      padding: 80px 48px 90px;
-      position: relative;
-      overflow: hidden;
-    }
+  /* CONTACT FORM */
+  .contact { background: var(--cream); padding: 96px 5%; }
+  .contact-wrap { max-width: 860px; margin: 0 auto; }
+  .contact-header { text-align: center; margin-bottom: 56px; }
+  .contact-header .section-eyebrow { justify-content: center; }
+  .contact-header .section-sub { margin: 0 auto; text-align: center; }
+  .contact-card { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 56px 60px; box-shadow: 0 4px 40px rgba(30,51,38,0.08); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+  .form-row.single { grid-template-columns: 1fr; }
+  .field-group { display: flex; flex-direction: column; }
+  .field-group label { font-size: 11px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: #2e4435; margin-bottom: 8px; }
+  .field-group input, .field-group select, .field-group textarea { border: 1.5px solid rgba(45,74,53,0.2); border-radius: 6px; padding: 13px 16px; font-family: 'DM Sans', sans-serif; font-size: 15px; color: #1a2e1e; background: #f7f5f0; outline: none; transition: border-color 0.2s, background 0.2s; appearance: none; -webkit-appearance: none; }
+  .field-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%232e4435' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-color: #f7f5f0; background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer; }
+  .field-group textarea { resize: vertical; min-height: 100px; }
+  .field-group input:focus, .field-group select:focus, .field-group textarea:focus { border-color: #e8930a; background: #fff; box-shadow: 0 0 0 3px rgba(232,147,10,0.1); }
+  .field-group input::placeholder, .field-group textarea::placeholder { color: rgba(46,68,53,0.4); }
+  .form-divider { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
+  .form-note { font-size: 13px; color: #2e4435; line-height: 1.65; margin-bottom: 26px; padding: 14px 18px; background: #ddeae0; border-radius: 6px; border-left: 3px solid #3a5c43; }
+  .form-note strong { color: #1a2e1e; }
+  .form-submit { width: 100%; background: #1a2e1e; color: #fff; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600; padding: 17px; border: none; border-radius: 6px; cursor: pointer; letter-spacing: 0.4px; transition: background 0.2s, transform 0.15s; }
+  .form-submit:hover { background: #2d4a35; transform: translateY(-1px); }
+  .form-trust { display: flex; align-items: center; justify-content: center; gap: 28px; margin-top: 22px; flex-wrap: wrap; }
+  .trust-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #3a4e3e; }
+  .trust-item::before { content: '✓'; color: #2d4a35; font-weight: 700; }
+  .success-state { display: none; text-align: center; padding: 40px 20px; }
+  .success-icon { width: 64px; height: 64px; background: #ddeae0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 24px; }
+  .success-state h3 { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 600; color: #1a2e1e; margin-bottom: 12px; }
+  .success-state p { font-size: 16px; color: #3a4e3e; max-width: 440px; margin: 0 auto; line-height: 1.75; }
 
-    .hero::before {
-      content: '§45B';
-      position: absolute;
-      right: -20px; top: 20px;
-      font-family: 'Playfair Display', serif;
-      font-size: 18rem;
-      font-weight: 900;
-      color: rgba(201,168,76,0.05);
-      line-height: 1;
-      pointer-events: none;
-      user-select: none;
-    }
+  /* FOOTER */
+  footer { background: #1a2e1e; padding: 44px 5%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; border-top: 2px solid rgba(232,147,10,0.25); }
+  .footer-logo { background: #fff; border-radius: 8px; padding: 8px 14px; display: inline-block; }
+  .footer-logo img { height: 40px; width: auto; display: block; }
+  .footer-contact { font-size: 13px; color: rgba(255,255,255,0.55); text-align: center; }
+  .footer-contact a { color: #f5a825; text-decoration: none; }
+  .footer-legal { font-size: 12px; color: rgba(255,255,255,0.32); text-align: right; }
 
-    .hero-inner { max-width: 760px; position: relative; }
-
-    .hero-eyebrow {
-      display: inline-block;
-      font-size: 0.72rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--gold);
-      border: 1px solid rgba(201,168,76,0.4);
-      padding: 5px 12px;
-      border-radius: 3px;
-      margin-bottom: 28px;
-    }
-
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.4rem, 5vw, 3.8rem);
-      font-weight: 900;
-      line-height: 1.15;
-      margin-bottom: 24px;
-    }
-
-    .hero h1 em {
-      font-style: italic;
-      color: var(--gold);
-    }
-
-    .hero-sub {
-      font-size: 1.1rem;
-      color: rgba(255,255,255,0.78);
-      max-width: 580px;
-      line-height: 1.75;
-      margin-bottom: 40px;
-    }
-
-    .badges {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .badge {
-      display: flex; align-items: center; gap: 7px;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.15);
-      padding: 8px 16px;
-      border-radius: 30px;
-      font-size: 0.82rem;
-      color: rgba(255,255,255,0.9);
-    }
-    .badge-dot {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: var(--gold);
-    }
-
-    /* ── CALCULATOR ── */
-    .calc-section {
-      background: var(--white);
-      padding: 80px 48px;
-    }
-
-    .calc-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      max-width: 1000px;
-      margin: 0 auto;
-      align-items: start;
-    }
-
-    .calc-intro h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 8px;
-    }
-
-    .calc-intro .free-tag {
-      display: inline-block;
-      background: var(--green);
-      color: #fff;
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      border-radius: 3px;
-      margin-bottom: 20px;
-    }
-
-    .calc-intro p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.7;
-    }
-
-    /* form */
-    .calc-form { display: flex; flex-direction: column; gap: 18px; }
-
-    .form-field label {
-      display: block;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-
-    .input-wrap {
-      position: relative;
-    }
-
-    .input-prefix {
-      position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
-      font-size: 0.95rem; color: var(--muted); pointer-events: none;
-    }
-
-    .calc-form input[type="number"] {
-      width: 100%;
-      padding: 12px 14px;
-      border: 1.5px solid var(--border);
-      border-radius: 6px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 1rem;
-      color: var(--text);
-      background: var(--cream);
-      transition: border-color 0.2s;
-      -moz-appearance: textfield;
-    }
-
-    .calc-form input[type="number"]::-webkit-inner-spin-button,
-    .calc-form input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; }
-
-    .calc-form input[type="number"]:focus {
-      outline: none;
-      border-color: var(--gold);
-      background: #fff;
-    }
-
-    .has-prefix input { padding-left: 30px; }
-
-    .calc-btn {
-      background: var(--gold);
-      color: var(--navy);
-      border: none;
-      padding: 14px 24px;
-      border-radius: 6px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      cursor: pointer;
-      letter-spacing: 0.02em;
-      margin-top: 4px;
-      transition: background 0.2s, transform 0.1s;
-    }
-    .calc-btn:hover { background: var(--gold2); }
-    .calc-btn:active { transform: scale(0.99); }
-
-    /* result */
-    .calc-result {
-      margin-top: 8px;
-      padding: 20px;
-      border: 2px solid var(--border);
-      border-radius: 8px;
-      text-align: center;
-      background: var(--cream);
-    }
-
-    .result-label {
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-
-    .result-amount {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--navy);
-    }
-
-    .result-amount.placeholder { font-size: 1rem; font-family: 'DM Sans', sans-serif; color: var(--muted); }
-
-    .result-note {
-      font-size: 0.72rem;
-      color: var(--muted);
-      margin-top: 10px;
-      line-height: 1.5;
-    }
-
-    .result-cta {
-      display: block;
-      margin-top: 14px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--gold);
-      text-decoration: none;
-    }
-    .result-cta:hover { text-decoration: underline; }
-
-    /* ── HOW IT WORKS ── */
-    .how-section {
-      background: var(--cream);
-      padding: 80px 48px;
-      border-top: 1px solid var(--border);
-    }
-
-    .how-section h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      text-align: center;
-      margin-bottom: 52px;
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 40px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .step {
-      text-align: center;
-    }
-
-    .step-num {
-      width: 48px; height: 48px;
-      border-radius: 50%;
-      background: var(--navy);
-      color: var(--gold);
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-      font-weight: 700;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 18px;
-    }
-
-    .step h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: var(--navy);
-    }
-
-    .step p {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    /* ── CONTACT ── */
-    #contact {
-      background: var(--navy2);
-      color: var(--white);
-      padding: 80px 48px;
-    }
-
-    .contact-inner {
-      max-width: 600px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    #contact h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      margin-bottom: 12px;
-    }
-
-    #contact p {
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 40px;
-      font-size: 1rem;
-    }
-
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      text-align: left;
-    }
-
-    .contact-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .contact-form input,
-    .contact-form select,
-    .contact-form textarea {
-      width: 100%;
-      padding: 13px 16px;
-      border: 1.5px solid rgba(255,255,255,0.15);
-      border-radius: 6px;
-      background: rgba(255,255,255,0.07);
-      color: var(--white);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.95rem;
-      transition: border-color 0.2s;
-    }
-
-    .contact-form input::placeholder,
-    .contact-form textarea::placeholder { color: rgba(255,255,255,0.35); }
-
-    .contact-form select { color: rgba(255,255,255,0.7); }
-    .contact-form select option { background: var(--navy2); color: var(--white); }
-
-    .contact-form input:focus,
-    .contact-form select:focus,
-    .contact-form textarea:focus {
-      outline: none;
-      border-color: var(--gold);
-    }
-
-    .contact-form textarea { resize: vertical; min-height: 100px; }
-
-    .contact-submit {
-      background: var(--gold);
-      color: var(--navy);
-      border: none;
-      padding: 15px 32px;
-      border-radius: 6px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-      letter-spacing: 0.02em;
-      transition: background 0.2s;
-      margin-top: 4px;
-    }
-    .contact-submit:hover { background: var(--gold2); }
-
-    .form-success {
-      display: none;
-      background: rgba(42,127,98,0.2);
-      border: 1px solid rgba(42,127,98,0.5);
-      color: #6fcfad;
-      padding: 18px;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      text-align: center;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--navy);
-      color: rgba(255,255,255,0.45);
-      text-align: center;
-      padding: 28px 48px;
-      font-size: 0.8rem;
-    }
-
-    footer strong { color: rgba(255,255,255,0.7); }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 720px) {
-      header { padding: 16px 20px; }
-      .hero { padding: 60px 20px 70px; }
-      .calc-section, .how-section, #contact { padding: 60px 20px; }
-      .calc-grid { grid-template-columns: 1fr; gap: 40px; }
-      .steps { grid-template-columns: 1fr; }
-      .contact-row { grid-template-columns: 1fr; }
-      footer { padding: 24px 20px; }
-    }
-  </style>
+  /* RESPONSIVE */
+  @media (max-width: 960px) {
+    .hero { grid-template-columns: 1fr; padding: 110px 5% 60px; }
+    .hero-left { padding-right: 0; margin-bottom: 48px; }
+    .calc-card { max-width: 100%; }
+    .what-grid { grid-template-columns: 1fr; gap: 40px; }
+    .steps-grid { grid-template-columns: 1fr 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .qualify-grid { grid-template-columns: 1fr 1fr; }
+    .contact-card { padding: 36px 28px; }
+    .form-row { grid-template-columns: 1fr; }
+    .analogy-box { flex-direction: column; gap: 16px; }
+    footer { flex-direction: column; text-align: center; }
+    .footer-legal { text-align: center; }
+    .logo-band-divider { display: none; }
+  }
+  @media (max-width: 600px) {
+    .steps-grid { grid-template-columns: 1fr; }
+    .qualify-grid { grid-template-columns: 1fr; }
+    .nav-division { display: none; }
+  }
+</style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header>
-  <div class="logo-mark">
-    <div class="logo-icon">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-      </svg>
-    </div>
-    <div class="logo-text">
-      <div class="brand">The Inspire Group</div>
-      <div class="division">FICA Tip Credit Division</div>
-    </div>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="https://whitt2025.github.io/inspire-fica/assets/logo.jpeg" alt="The Inspire Group" onerror="this.style.display='none'" />
+    <div class="nav-division">FICA Tip Credit Division</div>
   </div>
-  <div class="header-cta">
-    <a href="#contact">Check My Eligibility</a>
-  </div>
-</header>
+  <a href="#contact" class="nav-cta">Check My Eligibility</a>
+</nav>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-inner">
-    <span class="hero-eyebrow">Federal Tax Credit Recovery — IRC §45B</span>
-    <h1>Your Restaurant May Be <em>Owed Thousands</em> From the IRS.</h1>
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Federal Tax Credit Recovery — IRC §45B</div>
+    <h1>Your Restaurant May Be<br /><em>Owed Thousands</em><br />From the IRS.</h1>
     <p class="hero-sub">Most restaurant owners qualify for a little-known federal payroll tax credit — and most have never claimed it. The Inspire Group specializes in recovering those funds at no upfront cost.</p>
-    <div class="badges">
-      <div class="badge"><span class="badge-dot"></span>No upfront cost</div>
-      <div class="badge"><span class="badge-dot"></span>3 years retroactive</div>
-      <div class="badge"><span class="badge-dot"></span>Contingency-based</div>
+    <div class="hero-proof">
+      <div class="hero-proof-item">No upfront cost</div>
+      <div class="hero-proof-item">3 years retroactive</div>
+      <div class="hero-proof-item">Contingency-based</div>
     </div>
   </div>
-</section>
-
-<!-- CALCULATOR -->
-<section class="calc-section">
-  <div class="calc-grid">
-    <div class="calc-intro">
-      <span class="free-tag">Free &amp; Instant</span>
-      <h2>Estimate Your<br/>Refund</h2>
-      <p>Enter your basic payroll data below and we'll calculate your estimated annual FICA Tip Credit. Based on IRC §45B at 7.65% of qualifying tip wages.</p>
-    </div>
-
-    <div>
-      <div class="calc-form">
-        <div class="form-field">
-          <label>Tipped Employees</label>
-          <input type="number" id="employees" min="0" placeholder="e.g. 12" />
-        </div>
-        <div class="form-field">
-          <label>Avg Hours / Week</label>
-          <input type="number" id="hours" min="0" placeholder="e.g. 30" />
-        </div>
-        <div class="form-field">
-          <label>Avg Tips Reported / Employee / Week</label>
-          <div class="input-wrap has-prefix">
-            <span class="input-prefix">$</span>
-            <input type="number" id="tips" min="0" placeholder="e.g. 400" />
-          </div>
-        </div>
-        <div class="form-field">
-          <label>Avg Hourly Wage (excl. tips)</label>
-          <div class="input-wrap has-prefix">
-            <span class="input-prefix">$</span>
-            <input type="number" id="wage" min="0" step="0.01" placeholder="e.g. 7.25" />
-          </div>
-        </div>
-        <button class="calc-btn" onclick="calculate()">Calculate My Estimate →</button>
+  <div class="hero-right">
+    <div class="calc-card">
+      <div class="calc-card-header">
+        <div class="calc-card-title">Estimate Your<br />Refund</div>
+        <div class="calc-card-badge">Free &amp; Instant</div>
       </div>
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label>Tipped Employees</label>
+          <input type="number" class="no-prefix" id="c-employees" placeholder="e.g. 12" min="1" />
+        </div>
+        <div class="calc-field">
+          <label>Avg Hours / Week</label>
+          <input type="number" class="no-prefix" id="c-hours" placeholder="e.g. 30" min="1" />
+        </div>
+      </div>
+      <div class="calc-field">
+        <label>Avg Tips Reported / Employee / Week</label>
+        <div class="calc-field-row">
+          <div class="calc-prefix">$</div>
+          <input type="number" id="c-tips" placeholder="e.g. 600" min="0" />
+        </div>
+      </div>
+      <div class="calc-field">
+        <label>Avg Hourly Wage (excl. tips)</label>
+        <div class="calc-field-row">
+          <div class="calc-prefix">$</div>
+          <input type="number" id="c-wage" placeholder="e.g. 8.00" min="0" step="0.01" />
+        </div>
+      </div>
+      <button class="calc-btn" onclick="runCalc()">Calculate My Estimate &#x2192;</button>
+      <div class="calc-result">
+        <div class="calc-result-label">Estimated Annual Credit</div>
+        <div class="calc-result-amount placeholder" id="c-result">Enter numbers above</div>
+      </div>
+      <div class="calc-disclaimer">Based on IRC §45B at 7.65% of qualifying tip wages. Estimate only — actual credit may vary.</div>
+      <a href="#contact" class="calc-cta-link">Ready to claim yours? Request a free review &#x2192;</a>
+    </div>
+  </div>
+</div>
 
-      <div class="calc-result" id="result-box">
-        <div class="result-label">Estimated Annual Credit</div>
-        <div class="result-amount placeholder" id="result-amount">Enter numbers above</div>
-        <div class="result-note" id="result-note">Based on IRC §45B at 7.65% of qualifying tip wages. Estimate only — actual credit may vary.</div>
-        <a href="#contact" class="result-cta" id="result-cta" style="display:none">Ready to claim yours? Request a free review →</a>
+<!-- LOGO BAND -->
+<div class="logo-band">
+  <div class="logo-band-inner">
+    <img src="https://whitt2025.github.io/inspire-fica/assets/logo.jpeg" alt="The Inspire Group" onerror="this.style.display='none'" />
+    <div class="logo-band-divider"></div>
+    <p class="logo-band-tagline">"Helping businesses recover money that was always rightfully theirs."</p>
+  </div>
+</div>
+
+<!-- WHAT IS IT -->
+<section class="what" id="what">
+  <div class="section-eyebrow">The Credit Explained</div>
+  <div class="what-grid">
+    <div class="what-copy">
+      <h2 class="section-title">Section 45B: A Permanent Federal Credit Most Restaurants Miss</h2>
+      <p>The FICA Tip Credit (IRC §45B) allows qualifying employers to recover a portion of the Social Security and Medicare taxes they pay on employee tip income — dollar-for-dollar against their federal tax bill.</p>
+      <p>Despite being a permanent part of the tax code, the vast majority of eligible restaurants have never claimed it. Not because they don't qualify — but because most CPAs and payroll companies simply don't specialize in this area of recovery.</p>
+      <blockquote>"Your CPA is your family doctor. The FICA Tip Credit is heart surgery — it requires a specialist."</blockquote>
+      <p>The Inspire Group focuses exclusively on this credit. We analyze your payroll, calculate your eligibility, and manage the recovery — with no upfront cost to you.</p>
+    </div>
+    <div class="what-right">
+      <div class="what-visual">
+        <div class="vis-label">Sample Estimate — 10 Servers</div>
+        <div class="vis-row"><div class="vis-icon">&#x1F465;</div><div class="vis-text"><strong>10</strong><span>Tipped employees</span></div></div>
+        <div class="vis-row"><div class="vis-icon">&#x1F4B5;</div><div class="vis-text"><strong>$200 / shift</strong><span>Average tips reported</span></div></div>
+        <div class="vis-row"><div class="vis-icon">&#x1F4C5;</div><div class="vis-text"><strong>5 days / week</strong><span>Operating schedule</span></div></div>
+        <hr class="vis-divider" />
+        <div class="vis-row"><div class="vis-icon">&#x1F4CA;</div><div class="vis-text"><strong>$520,000</strong><span>Annual qualifying tip wages</span></div></div>
+        <div class="vis-row"><div class="vis-icon">&#x2715;</div><div class="vis-text"><strong>7.65%</strong><span>FICA tax rate applied</span></div></div>
+        <div class="vis-total"><span>Estimated Annual Credit</span><strong>~$39,780</strong></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- HOW IT WORKS -->
-<section class="how-section">
-  <h2>How It Works</h2>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <h3>Free Eligibility Review</h3>
-      <p>We analyze your payroll data at no cost to determine your exact credit amount across up to three prior tax years.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <h3>We Handle Everything</h3>
-      <p>Our specialists prepare all required IRS filings — amended returns, documentation, and compliance checks — on your behalf.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <h3>You Receive Your Refund</h3>
-      <p>Once the IRS processes your claim, you receive your credit. We only get paid when you do — no upfront cost, ever.</p>
+<section class="how" id="how">
+  <div class="section-eyebrow">The Process</div>
+  <h2 class="section-title">Simple. Straightforward. No Risk.</h2>
+  <p class="section-sub">We've made the process as frictionless as possible. Most clients spend less than 30 minutes on their end — we handle everything else.</p>
+  <div class="steps-grid">
+    <div class="step"><div class="step-num">01</div><div class="step-accent"></div><h3>Quick Eligibility Review</h3><p>Share a few basic details about your restaurant and payroll. We assess your potential credit at no cost or obligation whatsoever.</p></div>
+    <div class="step"><div class="step-num">02</div><div class="step-accent"></div><h3>Refund Estimate Delivered</h3><p>We calculate your estimated credit — including potential retroactive refunds for up to three prior tax years.</p></div>
+    <div class="step"><div class="step-num">03</div><div class="step-accent"></div><h3>We Handle the Filing</h3><p>Our specialists prepare the IRS forms and coordinate with your existing CPA or payroll provider — no disruption to your current relationships.</p></div>
+    <div class="step"><div class="step-num">04</div><div class="step-accent"></div><h3>You Receive Your Refund</h3><p>Funds are returned directly to you. Our fee is contingency-based — we only get paid when you do.</p></div>
+  </div>
+</section>
+
+<!-- WHY MISSED -->
+<section class="why" id="why">
+  <div class="section-eyebrow">Why Restaurants Miss This</div>
+  <h2 class="section-title">This Isn't Your CPA's Fault —<br />It's a Specialization Gap.</h2>
+  <p class="why-sub">The tax code contains over 8,000 credits and deductions. This one requires specialized forensic payroll analysis most general accounting firms simply don't offer.</p>
+  <div class="why-grid">
+    <div class="why-card"><div class="why-card-icon">&#x1F4CB;</div><h3>Payroll Companies Focus on Compliance</h3><p>Your payroll provider ensures accurate withholding and penalty avoidance — not proactive identification of recovery opportunities buried in tip income data.</p></div>
+    <div class="why-card"><div class="why-card-icon">&#x1F3E5;</div><h3>CPAs Aren't Recovery Specialists</h3><p>General practitioners file returns and manage books. Recovering tip credit funds requires a different discipline — one most firms don't resource or prioritize.</p></div>
+    <div class="why-card"><div class="why-card-icon">&#x23F0;</div><h3>The Window Is Time-Sensitive</h3><p>The IRS allows amended returns for only three prior years. Each year that passes without a claim is a year of potential refunds permanently lost.</p></div>
+    <div class="why-card"><div class="why-card-icon">&#x1F50D;</div><h3>The Calculation Requires Expertise</h3><p>Qualifying tip wages must be calculated against a frozen 1996 federal minimum wage floor — a nuance requiring specialized software most generalists lack.</p></div>
+  </div>
+  <div class="analogy-box">
+    <div class="analogy-sun">&#x2600;&#xFE0F;</div>
+    <div>
+      <div class="analogy-quote">"We are not replacing your CPA. We are <em>recovery specialists</em> — uncovering money most accounting workflows simply overlook."<span class="analogy-attr">— The Inspire Group</span></div>
     </div>
   </div>
 </section>
 
+<!-- WHO QUALIFIES -->
+<section class="who" id="qualifies">
+  <div class="section-eyebrow">Eligibility</div>
+  <h2 class="section-title">Who Typically Qualifies?</h2>
+  <p class="section-sub">If your business employs tipped workers and pays FICA taxes on their reported tips, there is a strong likelihood you have an unclaimed credit waiting.</p>
+  <div class="qualify-grid">
+    <div class="qualify-card"><span class="qualify-icon">&#x1F37D;&#xFE0F;</span><h3>Full-Service Restaurants</h3><p>Dine-in establishments with tipped servers, bartenders, bussers, or food runners are the most common and highest-value candidates.</p><div class="qualify-badge">&#x2713; Very likely eligible</div></div>
+    <div class="qualify-card"><span class="qualify-icon">&#x1F378;</span><h3>Bars &amp; Cocktail Lounges</h3><p>Beverage-focused establishments with tipped bartenders often carry substantial qualifying tip income and significant unclaimed credits.</p><div class="qualify-badge">&#x2713; Very likely eligible</div></div>
+    <div class="qualify-card"><span class="qualify-icon">&#x1F3E8;</span><h3>Hotels &amp; Hospitality</h3><p>Banquet staff, room service, valet, and restaurant employees within hotel operations all generate qualifying tip income.</p><div class="qualify-badge">&#x2713; Likely eligible</div></div>
+    <div class="qualify-card"><span class="qualify-icon">&#x1F69A;</span><h3>Fast Casual &amp; Delivery</h3><p>Counter-service and fast-casual concepts with tipped staff may qualify depending on tip reporting structure.</p><div class="qualify-badge">&#x2713; Worth reviewing</div></div>
+    <div class="qualify-card"><span class="qualify-icon">&#x1F487;</span><h3>Salons &amp; Spas</h3><p>Service businesses where gratuities are common and reported through payroll frequently meet the eligibility threshold.</p><div class="qualify-badge">&#x2713; Worth reviewing</div></div>
+    <div class="qualify-card"><span class="qualify-icon">&#x1F355;</span><h3>Multi-Location Groups</h3><p>Restaurant groups with multiple units often carry the largest aggregate credits — sometimes six figures or more across locations.</p><div class="qualify-badge">&#x2713; High priority</div></div>
+  </div>
+</section>
+
 <!-- CONTACT -->
-<section id="contact">
-  <div class="contact-inner">
-    <h2>Request a Free Review</h2>
-    <p>Tell us a little about your restaurant and we'll reach out within one business day with a detailed eligibility analysis.</p>
-
-    <form class="contact-form" onsubmit="submitForm(event)">
-      <div class="contact-row">
-        <input type="text" placeholder="First Name" required />
-        <input type="text" placeholder="Last Name" required />
+<section class="contact" id="contact">
+  <div class="contact-wrap">
+    <div class="contact-header">
+      <div class="section-eyebrow">Get Started</div>
+      <h2 class="section-title">Find Out What Your<br />Restaurant Is Owed</h2>
+      <p class="section-sub">No cost. No commitment. Just a straightforward conversation about whether the FICA Tip Credit applies to your business — and what you may be entitled to recover.</p>
+    </div>
+    <div class="contact-card">
+      <div id="form-area">
+        <form id="inquiry-form" onsubmit="handleSubmit(event)" novalidate>
+          <div class="form-row">
+            <div class="field-group"><label for="fname">First Name</label><input type="text" id="fname" placeholder="First name" required /></div>
+            <div class="field-group"><label for="lname">Last Name</label><input type="text" id="lname" placeholder="Last name" required /></div>
+          </div>
+          <div class="form-row">
+            <div class="field-group"><label for="email">Email Address</label><input type="email" id="email" placeholder="you@yourrestaurant.com" required /></div>
+            <div class="field-group"><label for="phone">Phone Number</label><input type="tel" id="phone" placeholder="(815) 546-2332" /></div>
+          </div>
+          <div class="form-row">
+            <div class="field-group"><label for="business">Restaurant / Business Name</label><input type="text" id="business" placeholder="Your restaurant name" required /></div>
+            <div class="field-group"><label for="locations">Number of Locations</label>
+              <select id="locations"><option value="">Select...</option><option>1 location</option><option>2-5 locations</option><option>6-15 locations</option><option>15+ locations</option></select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field-group"><label for="tipped-employees">Approximate Tipped Employees</label>
+              <select id="tipped-employees"><option value="">Select...</option><option>1-10 employees</option><option>11-25 employees</option><option>26-50 employees</option><option>50+ employees</option></select>
+            </div>
+            <div class="field-group"><label for="claimed">Have you ever claimed the FICA Tip Credit?</label>
+              <select id="claimed"><option value="">Select...</option><option>No - never heard of it</option><option>Not sure</option><option>Yes - some years</option><option>Yes - every year</option></select>
+            </div>
+          </div>
+          <div class="form-row single">
+            <div class="field-group"><label for="message">Anything else you'd like us to know? (Optional)</label><textarea id="message" placeholder="Questions, specific years to review, your CPA's name, etc."></textarea></div>
+          </div>
+          <hr class="form-divider" />
+          <div class="form-note"><strong>No disruption to your current CPA or payroll provider.</strong> Our review is completely independent and confidential. We'll reach out within one business day to schedule a brief call at your convenience.</div>
+          <button type="submit" class="form-submit">Request My Free Eligibility Review &#x2192;</button>
+          <div class="form-trust">
+            <span class="trust-item">No upfront cost</span>
+            <span class="trust-item">No obligation</span>
+            <span class="trust-item">Contingency-based only</span>
+            <span class="trust-item">Confidential review</span>
+          </div>
+        </form>
       </div>
-      <input type="email" placeholder="Business Email" required />
-      <input type="text" placeholder="Restaurant / Business Name" required />
-      <input type="tel" placeholder="Phone Number" />
-      <select>
-        <option value="" disabled selected>Number of Locations</option>
-        <option>1</option>
-        <option>2–5</option>
-        <option>6–15</option>
-        <option>16+</option>
-      </select>
-      <textarea placeholder="Anything else we should know? (optional)"></textarea>
-      <button type="submit" class="contact-submit">Submit for Free Review →</button>
-    </form>
-
-    <div class="form-success" id="form-success">
-      ✓ &nbsp;Thank you! We'll be in touch within one business day.
+      <div class="success-state" id="success-state">
+        <div class="success-icon">&#x2713;</div>
+        <h3>We've Received Your Request</h3>
+        <p>Thank you for reaching out. A member of The Inspire Group team will contact you within one business day to discuss your eligibility and next steps.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <p><strong>The Inspire Group</strong> &nbsp;·&nbsp; FICA Tip Credit Recovery Specialists &nbsp;·&nbsp; IRC §45B</p>
-  <p style="margin-top:6px">This estimate is for informational purposes only and does not constitute tax or legal advice.</p>
+  <div class="footer-logo"><img src="https://whitt2025.github.io/inspire-fica/assets/logo.jpeg" alt="The Inspire Group" onerror="this.style.display='none'" /></div>
+  <div class="footer-contact">Questions? Call us at <a href="tel:8155462332">(815) 546-2332</a></div>
+  <div class="footer-legal">&#x00A9; 2025 The Inspire Group. All rights reserved.<br />This page does not constitute tax or legal advice.</div>
 </footer>
 
 <script>
-  function calculate() {
-    const employees = parseFloat(document.getElementById('employees').value) || 0;
-    const hours     = parseFloat(document.getElementById('hours').value)     || 0;
-    const tips      = parseFloat(document.getElementById('tips').value)      || 0;
-    const wage      = parseFloat(document.getElementById('wage').value)      || 0;
+function runCalc() {
+  var employees = parseFloat(document.getElementById('c-employees').value);
+  var hours     = parseFloat(document.getElementById('c-hours').value);
+  var tips      = parseFloat(document.getElementById('c-tips').value);
+  var wage      = parseFloat(document.getElementById('c-wage').value);
+  var el        = document.getElementById('c-result');
 
-    const amountEl = document.getElementById('result-amount');
-    const ctaEl    = document.getElementById('result-cta');
-
-    if (!employees || !hours || !tips) {
-      amountEl.textContent = 'Please fill in all fields';
-      amountEl.className = 'result-amount placeholder';
-      ctaEl.style.display = 'none';
-      return;
-    }
-
-    // IRC §45B: credit = 7.65% of tips in excess of federal minimum wage
-    // Qualifying tips = total tips - (fed min wage - employer wage paid) * hours
-    // Simplified: qualifying tip wages = annual tips per employee (tips exceed $2.13 floor)
-    const annualTipsPerEmployee = tips * 52;
-    const qualifyingTips = Math.max(0, annualTipsPerEmployee) * employees;
-    const credit = qualifyingTips * 0.0765 * 0.75;
-
-    if (credit <= 0) {
-      amountEl.textContent = 'Insufficient tip data';
-      amountEl.className = 'result-amount placeholder';
-      ctaEl.style.display = 'none';
-      return;
-    }
-
-    amountEl.textContent = '$' + credit.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-    amountEl.className = 'result-amount';
-    ctaEl.style.display = 'block';
-
-    // Animate result
-    document.getElementById('result-box').style.borderColor = 'var(--gold)';
+  if (!employees || !hours || !tips || !wage) {
+    el.className = 'calc-result-amount placeholder';
+    el.textContent = 'Please fill all fields';
+    return;
   }
 
-  function submitForm(e) {
+  var annualHours    = hours * 52;
+  var annualTips     = tips * 52;
+  var floorWage      = 5.15;
+  var wageFloorGap   = Math.max(0, (floorWage - wage) * annualHours);
+  var qualifyingTips = Math.max(0, annualTips - wageFloorGap);
+  var creditPerEmp   = qualifyingTips * 0.0765 * 0.75;
+  var totalCredit    = creditPerEmp * employees;
+
+  if (totalCredit <= 0) {
+    el.className = 'calc-result-amount placeholder';
+    el.textContent = 'May not qualify — contact us';
+    return;
+  }
+
+  el.className = 'calc-result-amount';
+  el.textContent = '$' + Math.round(totalCredit).toLocaleString();
+}
+
+var APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyMIsEYPNU-ambdC7SGKrf9iqr1iczcuqs5zuM3Xn1iQ710CBVcmtMF94zdCN6SQ7hKTA/exec";
+
+function handleSubmit(e) {
+  e.preventDefault();
+  var fname    = document.getElementById('fname').value.trim();
+  var email    = document.getElementById('email').value.trim();
+  var business = document.getElementById('business').value.trim();
+  if (!fname || !email || !business) {
+    alert('Please fill in your name, email, and business name to continue.');
+    return;
+  }
+  var payload = {
+    fname:     fname,
+    lname:     document.getElementById('lname').value.trim(),
+    email:     email,
+    phone:     document.getElementById('phone').value.trim(),
+    business:  business,
+    locations: document.getElementById('locations').value,
+    employees: document.getElementById('tipped-employees').value,
+    claimed:   document.getElementById('claimed').value,
+    message:   document.getElementById('message').value.trim()
+  };
+  document.getElementById('form-area').style.display = 'none';
+  document.getElementById('success-state').style.display = 'block';
+  window.scrollTo({ top: document.getElementById('contact').offsetTop - 80, behavior: 'smooth' });
+  if (APPS_SCRIPT_URL) {
+    var params = Object.keys(payload).map(function(k) {
+      return encodeURIComponent(k) + '=' + encodeURIComponent(payload[k]);
+    }).join('&');
+    new Image().src = APPS_SCRIPT_URL + '?' + params;
+  }
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
     e.preventDefault();
-    e.target.style.display = 'none';
-    document.getElementById('form-success').style.display = 'block';
-  }
-
-  // Allow Enter key to trigger calc
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter' && ['employees','hours','tips','wage'].includes(e.target.id)) {
-      calculate();
-    }
+    var target = document.querySelector(a.getAttribute('href'));
+    if (target) window.scrollTo({ top: target.offsetTop - 74, behavior: 'smooth' });
   });
+});
 </script>
 </body>
 </html>
