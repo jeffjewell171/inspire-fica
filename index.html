@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FICA Tip Credit Recovery | The Inspire Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0d1b2a;
+      --navy2:   #12263a;
+      --gold:    #c9a84c;
+      --gold2:   #e2c17a;
+      --cream:   #f9f5ee;
+      --white:   #ffffff;
+      --text:    #1a1a2e;
+      --muted:   #5a6472;
+      --border:  #ddd6c8;
+      --green:   #2a7f62;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--navy);
+      padding: 18px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-mark {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-icon {
+      width: 44px; height: 44px;
+      background: var(--gold);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .logo-icon svg { width: 26px; height: 26px; fill: var(--navy); }
+
+    .logo-text { color: var(--white); }
+    .logo-text .brand { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; letter-spacing: 0.02em; }
+    .logo-text .division { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold2); margin-top: 1px; }
+
+    .header-cta a {
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 10px 22px;
+      border-radius: 4px;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: background 0.2s;
+    }
+    .header-cta a:hover { background: var(--gold2); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      color: var(--white);
+      padding: 80px 48px 90px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '§45B';
+      position: absolute;
+      right: -20px; top: 20px;
+      font-family: 'Playfair Display', serif;
+      font-size: 18rem;
+      font-weight: 900;
+      color: rgba(201,168,76,0.05);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .hero-inner { max-width: 760px; position: relative; }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201,168,76,0.4);
+      padding: 5px 12px;
+      border-radius: 3px;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.78);
+      max-width: 580px;
+      line-height: 1.75;
+      margin-bottom: 40px;
+    }
+
+    .badges {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: flex; align-items: center; gap: 7px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.9);
+    }
+    .badge-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    /* ── CALCULATOR ── */
+    .calc-section {
+      background: var(--white);
+      padding: 80px 48px;
+    }
+
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      max-width: 1000px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    .calc-intro h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .calc-intro .free-tag {
+      display: inline-block;
+      background: var(--green);
+      color: #fff;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 3px;
+      margin-bottom: 20px;
+    }
+
+    .calc-intro p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* form */
+    .calc-form { display: flex; flex-direction: column; gap: 18px; }
+
+    .form-field label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .input-wrap {
+      position: relative;
+    }
+
+    .input-prefix {
+      position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+      font-size: 0.95rem; color: var(--muted); pointer-events: none;
+    }
+
+    .calc-form input[type="number"] {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      color: var(--text);
+      background: var(--cream);
+      transition: border-color 0.2s;
+      -moz-appearance: textfield;
+    }
+
+    .calc-form input[type="number"]::-webkit-inner-spin-button,
+    .calc-form input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; }
+
+    .calc-form input[type="number"]:focus {
+      outline: none;
+      border-color: var(--gold);
+      background: #fff;
+    }
+
+    .has-prefix input { padding-left: 30px; }
+
+    .calc-btn {
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      padding: 14px 24px;
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+      margin-top: 4px;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .calc-btn:hover { background: var(--gold2); }
+    .calc-btn:active { transform: scale(0.99); }
+
+    /* result */
+    .calc-result {
+      margin-top: 8px;
+      padding: 20px;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      text-align: center;
+      background: var(--cream);
+    }
+
+    .result-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .result-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .result-amount.placeholder { font-size: 1rem; font-family: 'DM Sans', sans-serif; color: var(--muted); }
+
+    .result-note {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    .result-cta {
+      display: block;
+      margin-top: 14px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .result-cta:hover { text-decoration: underline; }
+
+    /* ── HOW IT WORKS ── */
+    .how-section {
+      background: var(--cream);
+      padding: 80px 48px;
+      border-top: 1px solid var(--border);
+    }
+
+    .how-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 52px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .step {
+      text-align: center;
+    }
+
+    .step-num {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--gold);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 18px;
+    }
+
+    .step h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--navy);
+    }
+
+    .step p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--navy2);
+      color: var(--white);
+      padding: 80px 48px;
+    }
+
+    .contact-inner {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    #contact h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+    }
+
+    #contact p {
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 40px;
+      font-size: 1rem;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      text-align: left;
+    }
+
+    .contact-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1.5px solid rgba(255,255,255,0.15);
+      border-radius: 6px;
+      background: rgba(255,255,255,0.07);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: rgba(255,255,255,0.35); }
+
+    .contact-form select { color: rgba(255,255,255,0.7); }
+    .contact-form select option { background: var(--navy2); color: var(--white); }
+
+    .contact-form input:focus,
+    .contact-form select:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    .contact-form textarea { resize: vertical; min-height: 100px; }
+
+    .contact-submit {
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      padding: 15px 32px;
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+      transition: background 0.2s;
+      margin-top: 4px;
+    }
+    .contact-submit:hover { background: var(--gold2); }
+
+    .form-success {
+      display: none;
+      background: rgba(42,127,98,0.2);
+      border: 1px solid rgba(42,127,98,0.5);
+      color: #6fcfad;
+      padding: 18px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+      padding: 28px 48px;
+      font-size: 0.8rem;
+    }
+
+    footer strong { color: rgba(255,255,255,0.7); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 720px) {
+      header { padding: 16px 20px; }
+      .hero { padding: 60px 20px 70px; }
+      .calc-section, .how-section, #contact { padding: 60px 20px; }
+      .calc-grid { grid-template-columns: 1fr; gap: 40px; }
+      .steps { grid-template-columns: 1fr; }
+      .contact-row { grid-template-columns: 1fr; }
+      footer { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo-mark">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+      </svg>
+    </div>
+    <div class="logo-text">
+      <div class="brand">The Inspire Group</div>
+      <div class="division">FICA Tip Credit Division</div>
+    </div>
+  </div>
+  <div class="header-cta">
+    <a href="#contact">Check My Eligibility</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-eyebrow">Federal Tax Credit Recovery — IRC §45B</span>
+    <h1>Your Restaurant May Be <em>Owed Thousands</em> From the IRS.</h1>
+    <p class="hero-sub">Most restaurant owners qualify for a little-known federal payroll tax credit — and most have never claimed it. The Inspire Group specializes in recovering those funds at no upfront cost.</p>
+    <div class="badges">
+      <div class="badge"><span class="badge-dot"></span>No upfront cost</div>
+      <div class="badge"><span class="badge-dot"></span>3 years retroactive</div>
+      <div class="badge"><span class="badge-dot"></span>Contingency-based</div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section class="calc-section">
+  <div class="calc-grid">
+    <div class="calc-intro">
+      <span class="free-tag">Free &amp; Instant</span>
+      <h2>Estimate Your<br/>Refund</h2>
+      <p>Enter your basic payroll data below and we'll calculate your estimated annual FICA Tip Credit. Based on IRC §45B at 7.65% of qualifying tip wages.</p>
+    </div>
+
+    <div>
+      <div class="calc-form">
+        <div class="form-field">
+          <label>Tipped Employees</label>
+          <input type="number" id="employees" min="0" placeholder="e.g. 12" />
+        </div>
+        <div class="form-field">
+          <label>Avg Hours / Week</label>
+          <input type="number" id="hours" min="0" placeholder="e.g. 30" />
+        </div>
+        <div class="form-field">
+          <label>Avg Tips Reported / Employee / Week</label>
+          <div class="input-wrap has-prefix">
+            <span class="input-prefix">$</span>
+            <input type="number" id="tips" min="0" placeholder="e.g. 400" />
+          </div>
+        </div>
+        <div class="form-field">
+          <label>Avg Hourly Wage (excl. tips)</label>
+          <div class="input-wrap has-prefix">
+            <span class="input-prefix">$</span>
+            <input type="number" id="wage" min="0" step="0.01" placeholder="e.g. 7.25" />
+          </div>
+        </div>
+        <button class="calc-btn" onclick="calculate()">Calculate My Estimate →</button>
+      </div>
+
+      <div class="calc-result" id="result-box">
+        <div class="result-label">Estimated Annual Credit</div>
+        <div class="result-amount placeholder" id="result-amount">Enter numbers above</div>
+        <div class="result-note" id="result-note">Based on IRC §45B at 7.65% of qualifying tip wages. Estimate only — actual credit may vary.</div>
+        <a href="#contact" class="result-cta" id="result-cta" style="display:none">Ready to claim yours? Request a free review →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section">
+  <h2>How It Works</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Free Eligibility Review</h3>
+      <p>We analyze your payroll data at no cost to determine your exact credit amount across up to three prior tax years.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>We Handle Everything</h3>
+      <p>Our specialists prepare all required IRS filings — amended returns, documentation, and compliance checks — on your behalf.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>You Receive Your Refund</h3>
+      <p>Once the IRS processes your claim, you receive your credit. We only get paid when you do — no upfront cost, ever.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <h2>Request a Free Review</h2>
+    <p>Tell us a little about your restaurant and we'll reach out within one business day with a detailed eligibility analysis.</p>
+
+    <form class="contact-form" onsubmit="submitForm(event)">
+      <div class="contact-row">
+        <input type="text" placeholder="First Name" required />
+        <input type="text" placeholder="Last Name" required />
+      </div>
+      <input type="email" placeholder="Business Email" required />
+      <input type="text" placeholder="Restaurant / Business Name" required />
+      <input type="tel" placeholder="Phone Number" />
+      <select>
+        <option value="" disabled selected>Number of Locations</option>
+        <option>1</option>
+        <option>2–5</option>
+        <option>6–15</option>
+        <option>16+</option>
+      </select>
+      <textarea placeholder="Anything else we should know? (optional)"></textarea>
+      <button type="submit" class="contact-submit">Submit for Free Review →</button>
+    </form>
+
+    <div class="form-success" id="form-success">
+      ✓ &nbsp;Thank you! We'll be in touch within one business day.
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>The Inspire Group</strong> &nbsp;·&nbsp; FICA Tip Credit Recovery Specialists &nbsp;·&nbsp; IRC §45B</p>
+  <p style="margin-top:6px">This estimate is for informational purposes only and does not constitute tax or legal advice.</p>
+</footer>
+
+<script>
+  function calculate() {
+    const employees = parseFloat(document.getElementById('employees').value) || 0;
+    const hours     = parseFloat(document.getElementById('hours').value)     || 0;
+    const tips      = parseFloat(document.getElementById('tips').value)      || 0;
+    const wage      = parseFloat(document.getElementById('wage').value)      || 0;
+
+    const amountEl = document.getElementById('result-amount');
+    const ctaEl    = document.getElementById('result-cta');
+
+    if (!employees || !hours || !tips) {
+      amountEl.textContent = 'Please fill in all fields';
+      amountEl.className = 'result-amount placeholder';
+      ctaEl.style.display = 'none';
+      return;
+    }
+
+    // IRC §45B: credit = 7.65% of tips in excess of federal minimum wage
+    // Qualifying tips = total tips - (fed min wage - employer wage paid) * hours
+    // Simplified: qualifying tip wages = annual tips per employee (tips exceed $2.13 floor)
+    const annualTipsPerEmployee = tips * 52;
+    const qualifyingTips = Math.max(0, annualTipsPerEmployee) * employees;
+    const credit = qualifyingTips * 0.0765;
+
+    if (credit <= 0) {
+      amountEl.textContent = 'Insufficient tip data';
+      amountEl.className = 'result-amount placeholder';
+      ctaEl.style.display = 'none';
+      return;
+    }
+
+    amountEl.textContent = '$' + credit.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    amountEl.className = 'result-amount';
+    ctaEl.style.display = 'block';
+
+    // Animate result
+    document.getElementById('result-box').style.borderColor = 'var(--gold)';
+  }
+
+  function submitForm(e) {
+    e.preventDefault();
+    e.target.style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+  }
+
+  // Allow Enter key to trigger calc
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && ['employees','hours','tips','wage'].includes(e.target.id)) {
+      calculate();
+    }
+  });
+</script>
+</body>
+</html>
