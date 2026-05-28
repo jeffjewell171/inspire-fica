@@ -628,7 +628,7 @@
     // Simplified: qualifying tip wages = annual tips per employee (tips exceed $2.13 floor)
     const annualTipsPerEmployee = tips * 52;
     const qualifyingTips = Math.max(0, annualTipsPerEmployee) * employees;
-    const credit = qualifyingTips * 0.0765;
+    const credit = qualifyingTips * 0.0765 * 0.75;
 
     if (credit <= 0) {
       amountEl.textContent = 'Insufficient tip data';
