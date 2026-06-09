@@ -455,7 +455,7 @@ function runCalc() {
   el.textContent = '$' + Math.round(totalCredit).toLocaleString();
 }
 
-var APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyx2KqDQOdT6G56E9Fd1h80xqNwx-T67yfPOFaJsguKpUZN30BArhobjb-GPCh4iUk/exec";
+var APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz8H3M_ILVDUBWpvTn6uyoglPovgzIQ3m34fz34BWHbNXj2pw_3u9A8FfUbH3-zVFI0bw/exec";
 
 function handleSubmit(e) {
   e.preventDefault();
@@ -467,15 +467,19 @@ function handleSubmit(e) {
     return;
   }
   var payload = {
-    fname:     fname,
-    lname:     document.getElementById('lname').value.trim(),
-    email:     email,
-    phone:     document.getElementById('phone').value.trim(),
-    business:  business,
-    locations: document.getElementById('locations').value,
-    employees: document.getElementById('tipped-employees').value,
-    claimed:   document.getElementById('claimed').value,
-    message:   document.getElementById('message').value.trim()
+    fname:      fname,
+    lname:      document.getElementById('lname').value.trim(),
+    email:      email,
+    phone:      document.getElementById('phone').value.trim(),
+    business:   business,
+    locations:  document.getElementById('locations').value,
+    employees:  document.getElementById('tipped-employees').value,
+    claimed:    document.getElementById('claimed').value,
+    message:    document.getElementById('message').value.trim(),
+    agent:      "Mark & Jeff",
+    agentName:  "Jeff Jewell",
+    agentEmail: "jeffjewell171@gmail.com",
+    agentPhone: "(815) 546-2332"
   };
   document.getElementById('form-area').style.display = 'none';
   document.getElementById('success-state').style.display = 'block';
